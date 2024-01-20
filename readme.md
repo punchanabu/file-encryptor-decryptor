@@ -1,4 +1,3 @@
-# Encryption and Decryption Tools
 This tools provide a simple way to encrypt and decrypt files using AES-256 encryption. it's written in Rust and use envoriment variables for managing encryption keys.
 
 ## Installation
