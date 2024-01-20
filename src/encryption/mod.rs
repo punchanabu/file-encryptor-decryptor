@@ -5,7 +5,7 @@ use rand::{thread_rng, RngCore};
 use std::string::String;
 use generic_array::GenericArray;
 
-type Aes256Cbc = Cbc<Aes256, Pkcs7>;
+pub type Aes256Cbc = Cbc<Aes256, Pkcs7>;
 
 pub fn encrypt(data: &[u8], key: Aes256) -> Result<Vec<u8>,String> {
     

@@ -15,6 +15,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "base64"
+version = "0.13.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9e1b586273c5702936fe7b7d6896644d8be71e6314cfe09d3167c95f712589e8"
+
+[[package]]
 name = "block-modes"
 version = "0.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -59,6 +65,7 @@ name = "file-encryptor-decryptor"
 version = "0.1.0"
 dependencies = [
  "aes",
+ "base64",
  "block-modes",
  "block-padding",
  "generic-array",
