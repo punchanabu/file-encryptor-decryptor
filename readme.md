@@ -25,16 +25,16 @@ KEY=your_generated_key
 ### Encrypting a File
 To encrypt a file you have to run the following command
 ```bash
-cargo run encrypt <file_path>
+cargo run encrypt <file_path> <output_path>
 ```
-This will create an encrypted file named encrypted 'encrypted.svg' (yeah svg ahhahha) in your project directory.
+This will create a encrypted file in output_path directory.
 
 ### Decrypting a File
 To decrypt a file:
 ```bash
-cargo run decrypt <encrypted_file_path>
+cargo run decrypt <encrypted_file_path> <output_path>
 ```
-This will create a decrypted file named 'decrypted.svg' in your project directory.
+This will create a decrypted file in output_path directory.
 
 ## Notes 
 - This is a simple tool for encrypting and decrypting files, it's not intended to be used in production environments and this is my first rust project so it's not perfect.

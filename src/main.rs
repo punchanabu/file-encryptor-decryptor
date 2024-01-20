@@ -28,9 +28,9 @@ impl Mode {
     }
 }
 
-fn encrypt_file(input_path : &Path) -> Result<PathBuf, Box<dyn std::error::Error>> {
+fn encrypt_file(input_path : &Path, output_path : &Path) -> Result<PathBuf, Box<dyn std::error::Error>> {
     
-    let encrypted_path = PathBuf::from("encrypted.txt");
+    let encrypted_path = PathBuf::from(output_path);
 
     let input_data = read_file_to_string(input_path)?;
 
@@ -50,9 +50,9 @@ fn encrypt_file(input_path : &Path) -> Result<PathBuf, Box<dyn std::error::Error
     Ok(encrypted_path)
 }
 
-fn decrypt_file(input_path : &Path) -> Result<PathBuf, Box<dyn std::error::Error>> {
+fn decrypt_file(input_path : &Path, output_path : &Path) -> Result<PathBuf, Box<dyn std::error::Error>> {
     
-    let decrypted_path = PathBuf::from("decrypted.txt");
+    let decrypted_path = PathBuf::from(output_path);
 
     let encrypted_base64 = read_file_to_string(input_path)?;
     let encrypted_data = decode(&encrypted_base64)?;
@@ -92,19 +92,21 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     
     dotenv().ok();
     let args: Vec<String> = env::args().collect();
-    if args.len() != 3 {
+    if args.len() != 4 {
         return Err("Invalid number of arguments. Must be both <'encrypt' or 'decrypt'> and <path>".into());
     }
 
     let mode = Mode::from_str(&args[1])?;
-    let path = Path::new(&args[2]);
+    let input_path = Path::new(&args[2]);
+    let output_path = Path::new(&args[3]);
+    
     match mode {
         Mode::Encrypt => {
-            let encrypted_path = encrypt_file(path)?;
+            let encrypted_path = encrypt_file(input_path, output_path)?;
             println!("Encrypted file is at {}", encrypted_path.display());
         },
         Mode::Decrypt => {
-            let decrypted_path =  decrypt_file(path)?;
+            let decrypted_path =  decrypt_file(input_path, output_path)?;
             println!("Decrypted file is at {}", decrypted_path.display());
         },
         Mode::GenerateKey => generate_key()?,
