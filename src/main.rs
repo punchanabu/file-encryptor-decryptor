@@ -1,8 +1,10 @@
 mod encryption;
+mod decryption;
 mod file_io;
 
 use std::path::{Path, PathBuf};
-use encryption::{encrypt, decrypt};
+use encryption::encrypt;
+use decryption::decrypt;
 use file_io::{read_file_to_string, write_string_to_file};
 use aes::{Aes256, NewBlockCipher};
 use generic_array::GenericArray;
