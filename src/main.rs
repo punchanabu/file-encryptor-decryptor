@@ -1,5 +1,6 @@
 mod file_io;
+mod encryption;
 
 fn main() {
-    println!("Hello, world!");
+    
 }
